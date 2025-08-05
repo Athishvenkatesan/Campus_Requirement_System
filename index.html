@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Recruitment System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav {
+            width: 100%;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 0.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: block;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        nav ul li a.active {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h2 {
+            color: #2E7D32;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        
+        .carousel-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+        
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .carousel-item.item-1 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            opacity: 1;
+        }
+        
+        .carousel-item.item-2 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+        
+        .carousel-item.item-3 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .arrow-prev {
+            left: 20px;
+        }
+        
+        .arrow-next {
+            right: 20px;
+        }
+        
+        #item-1:target ~ .carousel-item.item-1,
+        #item-2:target ~ .carousel-item.item-2,
+        #item-3:target ~ .carousel-item.item-3 {
+            opacity: 1;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+            border-top: 4px solid #4CAF50;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: #2E7D32;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #C8E6C9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.3rem 0;
+            }
+            
+            .carousel-wrapper {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Campus Recruitment System</h1>
+            <nav>
+                <ul>
+                    <li><a href="h.php" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="studentdetails.php"><i class="fas fa-user-graduate"></i> Student</a></li>
+                    <li><a href="companyform.php"><i class="fas fa-building"></i> Company</a></li>
+                    <li><a href="search.php"><i class="fas fa-search"></i> Search</a></li>
+                    <li><a href="about.php"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="contact.php"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li><a href="login.php"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <h2>Welcome to Campus Recruitment System</h2>
+        <p>Connecting talented students with top companies for a brighter future.</p>
+    </main>
+    
+    <div class="carousel-wrapper">
+        <span id="item-1"></span>
+        <span id="item-2"></span>
+        <span id="item-3"></span>
+        
+        <div class="carousel-item item-1">
+            <h3>Find Your Dream Job</h3>
+            <a href="#item-3" class="arrow-prev arrow"><i class="fas fa-chevron-left"></i></a>
+            <a href="#item-2" class="arrow-next arrow"><i class="fas fa-chevron-right"></i></a>
+        </div>
+
+        <div class="carousel-item item-2">
+            <h3>Connect with Top Companies</h3>
+            <a href="#item-1" class="arrow-prev arrow"><i class="fas fa-chevron-left"></i></a>
+            <a href="#item-3" class="arrow-next arrow"><i class="fas fa-chevron-right"></i></a>
+        </div>
+
+        <div class="carousel-item item-3">
+            <h3>Build Your Career</h3>
+            <a href="#item-2" class="arrow-prev arrow"><i class="fas fa-chevron-left"></i></a>
+            <a href="#item-1" class="arrow-next arrow"><i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+    
+    <main>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Job Posting</h3>
+                <p>Companies can easily post job openings and reach qualified candidates.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Resume Submission</h3>
+                <p>Students can submit their resumes online for recruiters to review.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Candidate Selection</h3>
+                <p>Efficient tools to filter and shortlist the best candidates.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+        
+        <h2>About Our System</h2>
+        <p>The campus recruitment system project is an application that streamlines the recruitment process for companies visiting college campuses to hire students. The system automates the entire recruitment process, from job posting to candidate selection, and helps companies save time and resources while finding the best candidates.</p>
+
+        <p>The campus recruitment system project typically includes features such as job posting, resume submission, candidate selection, interview scheduling, and communication with candidates. Companies can use the system to post job openings and receive applications from students, who can submit their resumes online. The system then allows the recruiters to filter and shortlist candidates based on their qualifications and experience. Our platform connects companies with job seekers on college campus. We provide a seamless and efficient recruiting process that benefits both the parties.</p>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>Athish &copy; 2023 Campus Recruitment System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

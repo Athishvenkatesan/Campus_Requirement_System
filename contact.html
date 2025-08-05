@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Campus Recruitment System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav {
+            margin-top: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 0.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .contactus {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .title h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2E7D32;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+        }
+        
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #2E7D32;
+        }
+        
+        .formBox {
+            margin-top: 1.5rem;
+        }
+        
+        .row50, .row100 {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .row50 {
+            flex-wrap: wrap;
+        }
+        
+        .row50 > div {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .inputBox {
+            margin-bottom: 1rem;
+        }
+        
+        .inputBox span {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .inputBox input, 
+        .inputBox textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .inputBox input:focus, 
+        .inputBox textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        
+        .inputBox textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .inputBox input[type="submit"] {
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .inputBox input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .infoBox {
+            margin-top: 1.5rem;
+        }
+        
+        .infoBox div {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .infoBox span {
+            margin-right: 1rem;
+            color: #4CAF50;
+            font-size: 1.2rem;
+            min-width: 24px;
+        }
+        
+        .infoBox p, 
+        .infoBox a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .infoBox a:hover {
+            color: #2E7D32;
+            text-decoration: underline;
+        }
+        
+        .sci {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            list-style: none;
+        }
+        
+        .sci li a {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .sci li a:hover {
+            color: #2E7D32;
+        }
+        
+        .map {
+            margin-top: 2rem;
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .box {
+                flex-direction: column;
+            }
+            
+            .map iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Campus Recruitment System</h1>
+        <nav>
+            <ul>
+                <li><a href="h.php"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="uploadstudent.php"><i class="fas fa-file-upload"></i> Document</a></li>
+                <li><a href="studentdetails.php"><i class="fas fa-user-graduate"></i> Student</a></li>
+                <li><a href="companyform.php"><i class="fas fa-building"></i> Company</a></li>
+                <li><a href="req.php"><i class="fas fa-clipboard-list"></i> Requirement</a></li>
+                <li><a href="report.php"><i class="fas fa-chart-bar"></i> Report</a></li>
+                <li><a href="search.php"><i class="fas fa-search"></i> Search</a></li>
+                <li><a href="about.php"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="contact.php"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="contactus">
+        <div class="title">
+            <h2>Get in Touch</h2>
+        </div>
+        <div class="box">
+            <div class="contact from">
+                <h3>Send a Message</h3>
+                <form>
+                    <div class="formBox">
+                        <div class="row50">
+                            <div class="inputBox">
+                                <span>First Name</span>
+                                <input type="text" placeholder="John">
+                            </div>
+                            <div class="inputBox">
+                                <span>Last Name</span>
+                                <input type="text" placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div class="row50">
+                            <div class="inputBox">
+                                <span>E-Mail ID</span>
+                                <input type="text" placeholder="johndoe@gmail.com">
+                            </div>
+                            <div class="inputBox">
+                                <span>Mobile</span>
+                                <input type="text" placeholder="+91 98734-56772">
+                            </div>
+                        </div>
+                        <div class="row100">
+                            <div class="inputBox">
+                                <span>Message</span>
+                                <textarea placeholder="Write your message here...."></textarea>
+                            </div>
+                        </div>
+                        <div class="row100">
+                            <div class="inputBox">
+                                <input type="submit" value="Send Message">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="contact info">
+                <h3>Contact Info</h3>
+                <div class="infoBox">
+                    <div>
+                        <span><ion-icon name="location"></ion-icon></span>
+                        <p>The American College (Satellite Campus)<br>Natham, Madurai<br>INDIA</p>
+                    </div>
+                    <div>
+                        <span><ion-icon name="mail"></ion-icon></span>
+                        <a href="mailto:athish0204@gmail.com">athish0204@gmail.com</a>
+                    </div>
+                    <div>
+                        <span><ion-icon name="call"></ion-icon></span>
+                        <a href="tel: +91 9585991586">+91 978 678 2314</a>
+                    </div>
+                    <ul class="sci">
+                        <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                        <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                        <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                        <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                    </ul>
+                </div>
+                <div class="contact map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.3531440773077!2d78.16830391376256!3d10.07012267458842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00b8ece85de2f3%3A0xff813aeaa0a83d4!2sTHE%20AMERICAN%20COLLEGE!5e0!3m2!1sen!2sin!4v1680804114402!5m2!1sen!2sin" 
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Athish &copy; 2023 Campus Recruitment System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

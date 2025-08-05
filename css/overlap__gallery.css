@@ -1,0 +1,13 @@
+h1{
+    color: #fff;
+    text-align:center;
+     }
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg,  #013e18,#1a913e 30%, #194f35 100%);
+    font-family: sans-serif;
+}
+table td {
+background:linear-gradient(to bottom, #C2C8C5, #C2C8C5);
+}
